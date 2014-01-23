@@ -1,12 +1,16 @@
 <div ng-include="'partials/navbar'"></div>
 
 <div class="jumbotron">
-  <h1>'Allo, 'Allo <span ng-show="currentUser">{{ currentUser.name }}</span>!</h1>
+  <h1>Welcome to Tarot Reader</h1>
   <p class="lead">
-    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
-    Always a pleasure scaffolding your apps.
+   Ask a question and get a random card 
   </p>
-  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!</a></p>
+  <div ng-show="randomCardLoaded">
+    <img ng-src="images/cards/{{randomCard.shortName}}.jpg" />
+    <h2>{{randomCard.name}}</h2>
+    <p ng-bind-html="randomCard.meaning"></p>
+  </div>
+  <p><a class="btn btn-lg btn-success"  ng-click="newRandomCard()">Get Random Card</a></p>
 </div>
 
 <div class="row marketing">

@@ -2,7 +2,11 @@
 
 angular.module('tarotReaderApp')
   .controller('MainCtrl', function ($scope, $http) {
-    $http.get('/api/awesomeThings').success(function(awesomeThings) {
-      $scope.awesomeThings = awesomeThings;
-    });
+    $scope.newRandomCard = function () {
+      $scope.randomCardLoaded = false;
+      $http.get('/api/cards/random').success(function(randomCard) {
+        $scope.randomCard = randomCard[0];
+        $scope.randomCardLoaded = true;
+      });
+    };
   });
