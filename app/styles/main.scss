@@ -1,4 +1,22 @@
+@import "compass";
+@import url(http://fonts.googleapis.com/css?family=Acme);
+
 $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
+
+/*****************
+ * reusable styles
+ *****************/
+
+ .stroke {
+    @include text-shadow(#FFF -1px -1px 0, #FFF 1px -1px 0, #FFF -1px 1px 0, #FFF 1px 1px 0);
+ }
+
+/*************************
+ * COLORS
+ *************************/
+
+ $dark-glass: rgba(10,10,10,.7);
+
 
 .browsehappy {
     margin: 0.2em 0;
@@ -8,10 +26,18 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
 }
 
 /* Space out content a bit */
+html {
+  background: url('/images/tree-background.jpg') no-repeat center center fixed;
+  @include background-size(cover);  
+}
+
 body {
     padding-top: 20px;
     padding-bottom: 20px;
+    background: none;
+    /**@include background(radial-gradient(circle, #FFFFFF, #000000));**/
 }
+
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
@@ -23,7 +49,7 @@ body {
 
 /* Custom page header */
 .header {
-    border-bottom: 1px solid #e5e5e5;
+    /*border-bottom: 1px solid #e5e5e5;*/
 }
 
 /* Make the masthead heading the same height as the navigation */
@@ -32,43 +58,105 @@ body {
     margin-bottom: 0;
     line-height: 40px;
     padding-bottom: 19px;
+    color: #000;
+    font-family: 'Acme', sans-serif;
+    font-size: 40px;
+    @extend .stroke;
 }
 
 /* Custom page footer */
 .footer {
     padding-top: 19px;
     color: #777;
-    border-top: 1px solid #e5e5e5;
+    text-align: right;
+   /* border-top: 1px solid #e5e5e5;*/
 }
 
 .container-narrow > hr {
     margin: 30px 0;
 }
 
-/* Main marketing message and sign up button */
-.jumbotron {
-    text-align: center;
-    border-bottom: 1px solid #e5e5e5;
+/*****************************
+ * navbar
+ *****************************/
+
+ .grey-nav {
+    li a {
+      color: #FFF;
+      font-family: sans-serif;
+      font-size: 16px;
+      /*@extend .stroke;*/
+    }
+    
+    li a:hover {
+      background-color: #999999;
+      color: #000000;
+    }
+
+    li.active a,
+    li.active a:hover { 
+      background-color: #999999;
+    }
+ }
+
+/*****************************
+ * widgets
+ *****************************/
+.widget {
+  margin-bottom: 5px;
+  color: #DDDDDD;
+  text-align: center;
 }
 
-.jumbotron .btn {
-    font-size: 21px;
-    padding: 14px 24px;
+.widget-content {
+  padding: 5px 5px;
+  /*border: 1px solid #999999;*/
+  border-top: 1px solid #999999;
+  background-color: $dark-glass;
+  @include border-radius(5px);
+  @include border-top-radius(0px);
+  
+  .btn {
+    background: #1414E3;
+    color: #fff;
+    font-family: Arial, sans-serif;
+   }
+  .btn:hover {
+    background-color: #FFF;
+    color: #000000;
+  }
 }
 
-/* Supporting marketing content */
-.marketing {
-    margin: 40px 0;
+.widget-heading {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding: 5px 0px;
+  /*border: 1px solid #999999;*/
+  border-bottom: none;
+  font-family: Arial, sans-serif;
+  font-size: 26px;
+  color: #FFF;
+  background-color: $dark-glass;
+  @include border-radius(5px);
+  @include border-bottom-radius(0px);
 }
 
-.marketing p + h4 {
-    margin-top: 28px;
+/****************************
+ * Card Widget
+ ****************************/
+
+.card-widget {
+  img {
+    margin-bottom: 5px;
+    width: 275px;
+  }
 }
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
     .container {
-        max-width: 730px;
+        max-width: 970px;
     }
 
     /* Remove the padding we set earlier */

@@ -1,25 +1,23 @@
 <div ng-include="'partials/navbar'"></div>
 
-<div class="jumbotron">
-  <h1>Welcome to Tarot Reader</h1>
-  <p class="lead">
-   Ask a question and get a random card 
-  </p>
-  <div ng-show="randomCardLoaded">
-    <img ng-src="images/cards/{{randomCard.shortName}}.jpg" />
-    <h2>{{randomCard.name}}</h2>
-    <p ng-bind-html="randomCard.meaning"></p>
+  <div class="row">
+    <section class="widget question-widget col-md-3 col-md-offset-1">
+      <h3 class="widget-heading">Question</h3>
+      <div class="widget-content">
+        <textarea id="question" class="from-control" rows=3></textarea> 
+        <p>Enter your Question</p>
+        <a class="btn btn-md btn-default"  ng-click="newRandomCard()">Draw Card</a> 
+      </div>
+    </section>
+    <section ng-show="randomCardLoaded" class="widget card-widget col-md-6 col-md-offset-1">
+       <h3 class="widget-heading">{{randomCard.name}}</h3>
+       <div class="widget-content">
+         <img class="card-image" ng-src="images/cards/{{randomCard.shortName}}.jpg" />
+         <p ng-bind-html="randomCard.meaning"></p>
+       </div>
+    </section>
   </div>
-  <p><a class="btn btn-lg btn-success"  ng-click="newRandomCard()">Get Random Card</a></p>
-</div>
-
-<div class="row marketing">
-  <div ng-repeat="thing in awesomeThings">
-      <h4>{{thing.name}}</h4>
-      <p>{{thing.info}}</p>
-  </div>
-</div>
-
 <div class="footer">
-  <p>♥ from the Yeoman team</p>
+  <p>&copy; <a href="https://github.com/lostways">Andrew Lowe</a></p>
+  <p>background image from: <a href="http://www.flickr.com/photos/devcentre/">http://www.flickr.com/photos/devcentre/</a></p>
 </div>
