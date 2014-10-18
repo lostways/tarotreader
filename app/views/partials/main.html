@@ -1,14 +1,30 @@
 <div ng-include="'partials/navbar'"></div>
 
   <div class="row">
-    <section class="widget question-widget col-md-3 col-md-offset-1">
-      <h3 class="widget-heading">Question</h3>
-      <div class="widget-content">
-        <textarea id="question" class="from-control" rows=3></textarea> 
-        <p>Enter your Question</p>
-        <a class="btn btn-md btn-default"  ng-click="newRandomCard()">Draw Card</a> 
+    <div class="col-md-3 col-md-offset-1">
+      <div class="row">
+        <section class="widget question-widget col-md-12">
+          <h3 class="widget-heading">Question</h3>
+          <div class="widget-content">
+            <h4 ng-show="randomCardLoaded">{{question}}</h4>
+            <textarea ng-hide="randomCardLoaded" ng-model="question" id="question" class="from-control" rows=3></textarea> 
+            <p ng-hide="randomCardLoaded">Enter your Question</p>
+            <a ng-hide="randomCardLoaded" class="btn btn-md btn-default"  ng-click="newRandomCard()">Draw Card</a>
+          </div>
+        </section>
       </div>
-    </section>
+      <div class="row">
+        <section ng-show="randomCardLoaded" class="widget question-widget col-md-12">
+          <h3 class="widget-heading">Notes</h3>
+          <div class="widget-content">
+            <textarea ng-model="notes" id="notes" class="from-control" rows=3></textarea> 
+            <p>Take Notes On Your Reading</p>
+            <a ng-class="{'disabled': disableSave}" class="btn btn-md btn-default" ng-click="saveReading()">Save</a>
+            <a class="btn btn-md btn-default"  ng-click="randomCardLoaded = false">New Draw</a>
+          </div>
+        </section>
+      </div>
+    </div>
     <section ng-show="randomCardLoaded" class="widget card-widget col-md-6 col-md-offset-1">
        <h3 class="widget-heading">{{randomCard.name}}</h3>
        <div class="widget-content">

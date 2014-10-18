@@ -7,8 +7,8 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
  * reusable styles
  *****************/
 
- .stroke {
-    @include text-shadow(#FFF -1px -1px 0, #FFF 1px -1px 0, #FFF -1px 1px 0, #FFF 1px 1px 0);
+ @mixin stroke($color) {
+    @include text-shadow($color -1px -1px 0, $color 1px -1px 0, $color -1px 1px 0, $color 1px 1px 0);
  }
 
 /*************************
@@ -16,7 +16,7 @@ $icon-font-path: "/bower_components/sass-bootstrap/fonts/";
  *************************/
 
  $dark-glass: rgba(10,10,10,.7);
-
+ $corporate-blue: #1414E3;
 
 .browsehappy {
     margin: 0.2em 0;
@@ -58,17 +58,21 @@ body {
     margin-bottom: 0;
     line-height: 40px;
     padding-bottom: 19px;
-    color: #000;
+    color: #FFF;
     font-family: 'Acme', sans-serif;
     font-size: 40px;
-    @extend .stroke;
+    @include stroke(#000);
 }
 
 /* Custom page footer */
 .footer {
     padding-top: 19px;
-    color: #777;
+    color: #FFF;
     text-align: right;
+    a, a:hover, a:visited {
+      color: #FFF;
+      text-decoration: underline;
+    }
    /* border-top: 1px solid #e5e5e5;*/
 }
 
@@ -117,9 +121,13 @@ body {
   @include border-top-radius(0px);
   
   .btn {
-    background: #1414E3;
+    background: $corporate-blue;
     color: #fff;
     font-family: Arial, sans-serif;
+    .disabled {
+      background: #999999;
+      color: #333;
+    }
    }
   .btn:hover {
     background-color: #FFF;

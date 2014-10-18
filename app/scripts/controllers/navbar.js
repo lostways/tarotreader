@@ -2,10 +2,7 @@
 
 angular.module('tarotReaderApp')
   .controller('NavbarCtrl', function ($scope, $location, Auth) {
-    $scope.menu = [/**{
-      'title': 'Home',
-      'link': '/'
-    }, **/{
+    $scope.menu = [{
       'title': 'My Readings',
       'link': '/readings'
     }];
